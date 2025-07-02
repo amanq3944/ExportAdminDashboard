@@ -8,13 +8,13 @@ const FilterBar = () => {
         <input
           type="text"
           placeholder="Search anything here...."
-          className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-200 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300"
+          className="pl-10 pr-1 px-5 py-2 rounded-md border border-gray-300 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-300"
         />
       </div>
       {['Buyer Name', 'Brand', 'Dept', 'Meeting Type', 'Participants', 'Meeting Date', 'Status'].map((filter) => (
         <select
           key={filter}
-          className="border border-gray-300 text-gray-400 rounded px-3 py-2 text-sm bg-white min-w-[140px]"
+          className="border border-gray-300 text-gray-400 rounded px-3 py-2 text-sm bg-white min-w-[100px]"
         >
           <option>{filter}</option>
         </select>

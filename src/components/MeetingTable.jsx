@@ -128,14 +128,14 @@ export default function MeetingTable() {
 
   return (
     <div className="p-4 bg-white rounded-md shadow border-gray-300 border ml-3 overflow-x-auto">
-      <FilterBar />
-      <div className="min-w-[1200px] relative">
+      <FilterBar className='fixed right-0 left-20' />
+      <div className="relative w-full">
         <table className="w-full text-sm table-auto">
-          <thead className="text-left bg-gray-50 text-gray-700">
-            <tr>
+          <thead className="text-left bg-gray-100 text-gray-700">
+            <tr className='border border-gray-300'>
               <th className="p-3"><input type="checkbox" /></th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 ">
                   Date & Time <ArrowUpDown className="w-4 h-4 text-gray-400" />
                 </div>
               </th>
