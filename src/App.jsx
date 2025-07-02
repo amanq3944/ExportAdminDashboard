@@ -9,9 +9,9 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-auto">
       <Sidebar />
-      <div className="flex-1 flex flex-col">
+      <div className="w-[83%] pr-1 flex-1 flex flex-col">
         <Topbar />
         <PageHeader />
         <StatusTabs />

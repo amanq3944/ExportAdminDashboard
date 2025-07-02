@@ -18,7 +18,7 @@ const AnimatedIcons = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setAngle((prev) => (prev + 1) % 360);
-    }, 1000); // adjust speed
+    }, 50); // adjust speed
     return () => clearInterval(interval);
   }, []);
 

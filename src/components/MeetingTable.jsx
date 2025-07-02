@@ -3,6 +3,7 @@ import StatusBadge from './StatusBadge';
 import FilterBar from './FilterBar';
 import BulkActionBar from './BulkActionBar';
 import Pagination from './Pagination';
+import { ArrowUpDown } from 'lucide-react';
 
 const data = [
   {
@@ -130,21 +131,62 @@ export default function MeetingTable() {
       <FilterBar />
       <div className="min-w-[1200px] relative">
         <table className="w-full text-sm table-auto">
-          <thead className="text-left bg-gray-50">
+          <thead className="text-left bg-gray-50 text-gray-700">
             <tr>
               <th className="p-3"><input type="checkbox" /></th>
-              <th className="p-3">Date & Time</th>
-              <th className="p-3">Status</th>
-              <th className="p-3">Type</th>
-              <th className="p-3">Buyer Name</th>
-              <th className="p-3">Brand</th>
-              <th className="p-3">Dept.</th>
-              <th className="p-3">Title</th>
-              <th className="p-3">Meeting Date</th>
-              <th className="p-3">Participants</th>
-              <th className="p-3 sticky right-0 bg-gray-50 z-10">Action</th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Date & Time <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Status <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Type <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Buyer Name <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Brand <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Dept. <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Title <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Meeting Date <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Participants <ArrowUpDown className="w-4 h-4 text-gray-400" />
+                </div>
+              </th>
+              <th className="p-3 sticky -right-4 bg-gray-50 z-10 whitespace-nowrap">
+                <div className="flex items-center gap-1">
+                  Action
+                </div>
+              </th>
             </tr>
           </thead>
+
           <tbody>
             {data.map((row, idx) => (
               <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100`}>
@@ -167,9 +209,9 @@ export default function MeetingTable() {
                 <td className="p-3 whitespace-nowrap font-medium underline underline-offset-2 cursor-pointer">{row.buyer}</td>
                 <td className="p-3 font-medium">{row.brand}</td>
                 <td className="p-3 font-medium">{row.dept}</td>
-                <td className="p-3 font-medium underline underline-offset-2 cursor-pointer">{row.title}</td>
+                <td className="p-3 whitespace-nowrap font-medium underline underline-offset-2 cursor-pointer">{row.title}</td>
                 <td className="p-3 whitespace-nowrap">{row.meetingDate}</td>
-                <td className="p-3">
+                <td className="p-3 whitespace-nowrap">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 bg-green-600 text-white text-xs rounded-full flex items-center justify-center font-semibold">M</div>
                     <div className="text-sm leading-4">
@@ -178,14 +220,14 @@ export default function MeetingTable() {
                     </div>
                   </div>
                 </td>
-                <td className={`p-3 text-gray-400 sticky right-0 z-10 whitespace-nowrap ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>⋮</td>
+                <td className={`p-3 text-gray-400 sticky -right-4 text-center z-10 whitespace-nowrap ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>⋮</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <BulkActionBar selectedCount={selected.length} onClear={() => setSelected([])} />
-      <Pagination totalPages={12} currentPage={1} onPageChange={() => {}} />
+      <Pagination totalPages={12} currentPage={1} onPageChange={() => { }} />
     </div>
   );
 }

@@ -63,7 +63,7 @@ const Sidebar = () => {
             `}
           >
             <div className="flex-shrink-0">{icon}</div>
-            <span>{name}</span>
+            <span className='whitespace-nowrap'>{name}</span>
             {hasSub && <BsChevronRight className="ml-auto text-gray-400 h-4 w-4" />}
           </div>
         ))}
