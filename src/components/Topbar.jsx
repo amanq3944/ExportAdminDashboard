@@ -1,16 +1,13 @@
 import { FiMenu, FiSearch, FiMessageSquare, FiBell } from 'react-icons/fi';
 
-const Topbar = () => {
+const Topbar = ({ onToggleSidebar }) => {
   return (
     <header className="w-full bg-white shadow-sm px-4 py-3 flex items-center justify-between">
-      {/* Left Section: Menu + Search */}
       <div className="flex items-center gap-4">
-        {/* Sidebar toggle */}
-        <button className="text-gray-700 text-2xl focus:outline-none">
+        <button onClick={onToggleSidebar} className="text-gray-700 text-2xl focus:outline-none hover:cursor-pointer">
           <FiMenu />
         </button>
 
-        {/* Search bar */}
         <div className="relative w-[300px] max-w-full">
           <FiSearch className="absolute left-3 top-2.5 text-gray-400" />
           <input
@@ -21,9 +18,7 @@ const Topbar = () => {
         </div>
       </div>
 
-      {/* Right Section: Icons + Profile */}
       <div className="flex items-center gap-6">
-        {/* Chat */}
         <div className="relative">
           <FiMessageSquare className="text-2xl text-gray-700" />
           <span className="absolute -top-2 -right-2 text-xs bg-purple-600 text-white rounded-full px-1.5">
@@ -31,7 +26,6 @@ const Topbar = () => {
           </span>
         </div>
 
-        {/* Notifications */}
         <div className="relative">
           <FiBell className="text-2xl text-gray-700" />
           <span className="absolute -top-2 -right-2 text-xs bg-purple-600 text-white rounded-full px-1.5">
@@ -39,7 +33,6 @@ const Topbar = () => {
           </span>
         </div>
 
-        {/* User Info */}
         <div className="flex items-center gap-2">
           <img
             src="https://randomuser.me/api/portraits/men/75.jpg"

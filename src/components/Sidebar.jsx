@@ -1,19 +1,7 @@
+import { motion } from 'framer-motion';
 import {
-  FiHome,
-  FiList,
-  FiCalendar,
-  FiDollarSign,
-  FiPackage,
-  FiLayers,
-  FiFileText,
-  FiShoppingBag,
-  FiBox,
-  FiCpu,
-  FiSettings,
-  FiUsers,
-  FiTruck,
-  FiBarChart2,
-  FiDatabase,
+  FiHome, FiList, FiCalendar, FiDollarSign, FiPackage, FiLayers, FiFileText,
+  FiShoppingBag, FiBox, FiCpu, FiSettings, FiUsers, FiTruck, FiBarChart2, FiDatabase
 } from 'react-icons/fi';
 import { FaRegClipboard, FaChartLine } from 'react-icons/fa';
 import { BsChevronRight } from 'react-icons/bs';
@@ -41,34 +29,39 @@ const menuItems = [
   { name: 'Settings', icon: <FiSettings className="h-5 w-5" />, hasSub: true },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   return (
-    <aside className="min-h-screen w-64 bg-white shadow-md px-4 py-6 flex flex-col gap-4">
-      {/* Logo */}
-      <div className="flex items-center space-x-2 mb-6 px-2">
-        {/* <img src="/logo.png" alt="Logo" className="w-8 h-8" /> */}
-        <h1 className="text-xl font-semibold text-gray-900">
-          <span className="font-bold">ADAM</span>{' '}
-          <span className="text-orange-500 font-semibold">EXPORTS</span>
-        </h1>
-      </div>
+    <motion.aside
+      initial={false}
+      animate={{ width: isOpen ? 280 : 0 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white shadow-md h-screen relative z-10"
+    >
+      <div className={`h-full overflow-y-auto transition-all duration-300 ${isOpen ? 'p-4' : 'p-0'}`}>
+        {/* Logo */}
+        <div className="flex items-center space-x-2 mb-6 px-2">
+          <h1 className="text-xl font-semibold text-gray-900 whitespace-nowrap">
+            <span className="font-bold">ADAM</span>{' '}
+            <span className="text-orange-500 font-semibold">EXPORTS</span>
+          </h1>
+        </div>
 
-      {/* Menu */}
-      <nav className="flex-1 space-y-1">
-        {menuItems.map(({ name, icon, active, hasSub }) => (
-          <div
-            key={name}
-            className={`flex items-center gap-3 px-3 py-2 rounded-full text-sm font-medium cursor-pointer transition
-              ${active ? 'bg-purple-100 text-purple-600' : 'text-gray-600 hover:bg-gray-100'}
-            `}
-          >
-            <div className="flex-shrink-0">{icon}</div>
-            <span className='whitespace-nowrap'>{name}</span>
-            {hasSub && <BsChevronRight className="ml-auto text-gray-400 h-4 w-4" />}
-          </div>
-        ))}
-      </nav>
-    </aside>
+        {/* Menu */}
+        <nav className="flex flex-col space-y-1">
+          {menuItems.map(({ name, icon, active, hasSub }) => (
+            <div
+              key={name}
+              className={`flex items-center gap-3 px-3 py-2 rounded-full text-sm font-medium cursor-pointer transition
+              ${active ? 'bg-purple-100 text-purple-600' : 'text-gray-600 hover:bg-gray-100'}`}
+            >
+              <div className="flex-shrink-0">{icon}</div>
+              <span className="whitespace-nowrap">{name}</span>
+              {hasSub && <BsChevronRight className="ml-auto text-gray-400 h-4 w-4" />}
+            </div>
+          ))}
+        </nav>
+      </div>
+    </motion.aside>
   );
 };
 

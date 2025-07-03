@@ -127,62 +127,47 @@ export default function MeetingTable() {
   };
 
   return (
-    <div className="p-4 bg-white rounded-md shadow border-gray-300 border ml-3 overflow-x-auto">
-      <FilterBar className='fixed right-0 left-20' />
-      <div className="relative w-full">
+    <div className="p-4 bg-white rounded-md shadow border border-gray-300 ml-3">
+      {/* Sticky FilterBar */}
+      <div className="sticky top-0 z-20 bg-white pb-1">
+        <FilterBar />
+      </div>
+
+      {/* Scrollable Table Container */}
+      <div className="overflow-auto max-h-[calc(100vh-280px)]">
         <table className="w-full text-sm table-auto">
           <thead className="text-left bg-gray-100 text-gray-700">
             <tr className='border border-gray-300'>
               <th className="p-3"><input type="checkbox" /></th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1 ">
-                  Date & Time <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Date & Time <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Status <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Status <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Type <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Type <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Buyer Name <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Buyer Name <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Brand <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Brand <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Dept. <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Dept. <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Title <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Title <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Meeting Date <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Meeting Date <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
               <th className="p-3 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Participants <ArrowUpDown className="w-4 h-4 text-gray-400" />
-                </div>
+                <div className="flex items-center gap-1">Participants <ArrowUpDown className="w-4 h-4 text-gray-400" /></div>
               </th>
-              <th className="p-3 sticky -right-4 bg-gray-50 z-10 whitespace-nowrap">
-                <div className="flex items-center gap-1">
-                  Action
-                </div>
+              <th className="p-3 sticky -right-1 bg-gray-50 z-10 whitespace-nowrap">
+                <div className="flex items-center gap-1">Action</div>
               </th>
             </tr>
           </thead>
@@ -198,9 +183,7 @@ export default function MeetingTable() {
                   />
                 </td>
                 <td className="p-3 whitespace-nowrap">{row.date}</td>
-                <td className="p-3">
-                  <StatusBadge status={row.status} />
-                </td>
+                <td className="p-3"><StatusBadge status={row.status} /></td>
                 <td className="p-3">
                   <span className={`text-xs font-medium px-2 py-1 rounded-full ${row.type === 'Online' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700'}`}>
                     {row.type}
@@ -220,12 +203,14 @@ export default function MeetingTable() {
                     </div>
                   </div>
                 </td>
-                <td className={`p-3 text-gray-400 sticky -right-4 text-center z-10 whitespace-nowrap ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>⋮</td>
+                <td className={`p-3 text-gray-400 sticky -right-1 text-center z-10 whitespace-nowrap ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>⋮</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Bottom Controls */}
       <BulkActionBar selectedCount={selected.length} onClear={() => setSelected([])} />
       <Pagination totalPages={12} currentPage={1} onPageChange={() => { }} />
     </div>
